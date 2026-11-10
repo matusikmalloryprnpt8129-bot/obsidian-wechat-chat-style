@@ -6,6 +6,28 @@ WeChat-inspired chat bubbles for Obsidian, built with native callouts and a scop
 
 这是独立制作的样式片段，与微信、腾讯或 Obsidian 官方没有关联。
 
+## 效果预览
+
+以下展示图使用项目同一份 CSS 和原生 callout 对应的 HTML 结构渲染，展示气泡与媒体样式，并非 Obsidian 软件完整窗口截图。对话和插画均为自制虚构示例；实际界面可能随主题、字体和缩放设置略有差异。
+
+### 浅色模式
+
+左右气泡、紧凑的单字回复，以及长消息自动换行。
+
+![浅色模式：左右气泡、单字回复和长消息换行](images/preview-light.png)
+
+### 深色模式
+
+同一套排版，使用适合深色背景的文字与气泡配色。
+
+![深色模式聊天样式](images/preview-dark.png)
+
+### 图片与表情
+
+媒体保持左右位置，不添加气泡背景或尖角。
+
+![图片与表情：纯媒体显示，不带气泡](images/preview-media.png)
+
 ## 功能
 
 - 对方消息靠左，自己的消息靠右。
@@ -22,6 +44,7 @@ WeChat-inspired chat bubbles for Obsidian, built with native callouts and a scop
 wechat-chat.css   样式片段
 example.md        可直接放进 Obsidian 的虚构示例
 README.md         使用说明
+images/           三张样式预览图
 ```
 
 ## 安装
@@ -129,4 +152,4 @@ cssclasses:
 
 ## 许可证
 
-当前文件包尚未附加开源许可证。正式公开发布时，请由发布者选定许可证并添加 `LICENSE` 文件；在添加之前，不表示已经授予开源再分发许可。
+本项目采用 MIT 许可证。许可证全文见仓库根目录的 `LICENSE` 文件。
