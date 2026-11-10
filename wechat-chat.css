@@ -1,0 +1,149 @@
+/* Obsidian WeChat Chat Style
+ * Enable this snippet and add cssclasses: [wechat-chat] to a note.
+ * Native callouts: wechat-her (left), wechat-me (right), |media (no bubble).
+ * No folder-specific rules, scripts, network requests or external assets.
+ */
+
+.wechat-chat {
+  --wechat-surface: #ededed;
+  --wechat-received: #ffffff;
+  --wechat-sent: #95ec69;
+  --wechat-ink: #202020;
+  --wechat-meta: #6c7278;
+}
+
+.theme-dark .wechat-chat {
+  --wechat-surface: #191b1e;
+  --wechat-received: #303338;
+  --wechat-sent: #376c30;
+  --wechat-ink: #edf1ee;
+  --wechat-meta: #a5abb2;
+}
+
+.wechat-chat.markdown-preview-view,
+.wechat-chat .cm-scroller {
+  background: var(--wechat-surface);
+}
+
+/* Hide note properties only in chat notes. Source mode remains editable. */
+.wechat-chat .metadata-container,
+.workspace-leaf-content:has(.wechat-chat) .metadata-container {
+  display: none !important;
+}
+
+.wechat-chat .callout:is([data-callout="wechat-me"], [data-callout="wechat-her"]) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+  max-width: 82%;
+  margin-top: 18px;
+  margin-bottom: 18px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+  mix-blend-mode: normal;
+  clear: both;
+}
+
+.wechat-chat .callout[data-callout="wechat-me"] {
+  align-items: flex-end;
+  margin-left: auto;
+  margin-right: 0;
+  --wechat-bubble: var(--wechat-sent);
+}
+
+.wechat-chat .callout[data-callout="wechat-her"] {
+  margin-left: 0;
+  margin-right: auto;
+  --wechat-bubble: var(--wechat-received);
+}
+
+.wechat-chat .callout:is([data-callout="wechat-me"], [data-callout="wechat-her"]) > .callout-title {
+  padding: 0 3px 6px;
+  color: var(--wechat-meta);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  background: transparent;
+}
+
+.wechat-chat .callout[data-callout="wechat-me"] > .callout-title {
+  justify-content: flex-end;
+}
+
+.wechat-chat .callout:is([data-callout="wechat-me"], [data-callout="wechat-her"]) .callout-icon {
+  display: none;
+}
+
+/* Body width is independent of the name/time row, including one-character replies. */
+.wechat-chat .callout:is([data-callout="wechat-me"], [data-callout="wechat-her"]) > .callout-content {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  border-radius: 7px;
+  background: var(--wechat-bubble);
+  color: var(--wechat-ink);
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  overflow: visible;
+}
+
+.wechat-chat .callout:is([data-callout="wechat-me"], [data-callout="wechat-her"]) > .callout-content::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  width: 9px;
+  height: 9px;
+  background: var(--wechat-bubble);
+  transform: rotate(45deg);
+}
+
+.wechat-chat .callout[data-callout="wechat-me"] > .callout-content::before {
+  right: -4px;
+}
+
+.wechat-chat .callout[data-callout="wechat-her"] > .callout-content::before {
+  left: -4px;
+}
+
+.wechat-chat .callout:is([data-callout="wechat-me"], [data-callout="wechat-her"]) > .callout-content > :first-child {
+  margin-top: 0;
+}
+
+.wechat-chat .callout:is([data-callout="wechat-me"], [data-callout="wechat-her"]) > .callout-content > :last-child {
+  margin-bottom: 0;
+}
+
+.wechat-chat .callout-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Media retains its alignment without a speech bubble, padding or tail. */
+.wechat-chat .callout:is([data-callout="wechat-me"], [data-callout="wechat-her"])[data-callout-metadata="media"] > .callout-content {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.wechat-chat .callout:is([data-callout="wechat-me"], [data-callout="wechat-her"])[data-callout-metadata="media"] > .callout-content::before {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .wechat-chat .callout:is([data-callout="wechat-me"], [data-callout="wechat-her"]) {
+    max-width: 90%;
+  }
+}
